@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 import javax.sql.DataSource;
 
@@ -165,6 +166,52 @@ public class TestClient
 	}
     }
 
+    public void testPreparedQuery()
+    {
+	// select * from testks.testcf where keeey = 'heee';
+	// should get 2 rows
+
+	PreparedStatement stmt = null;
+	Connection conn = null;
+	String sql = "select * from testks.testcf where keeey = ?;";
+
+	try {
+	    DataSource ds = new BasicCassDataSource("10.100.182.166");
+
+	    conn = ds.getConnection();
+	    stmt = conn.prepareStatement(sql);
+
+	    stmt.setString(1, "heee");
+
+	    ResultSet rs = stmt.executeQuery();
+
+	    while (rs.next()) {
+		System.out.println(String.format("%-20s\t%-20s\t%-30s",
+						 rs.getString(1),
+						 rs.getString(2),
+						 rs.getString(3)));
+	    }
+	}
+	catch (SQLException e) {
+	    m_log.fatal("got sqlexception", e);
+	}
+	finally {
+	    try {
+		stmt.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		conn.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing conn", e);
+	    }
+	}
+    }
+
     public static void main(String[] args) 
     {
 	TestClient client = new TestClient();
@@ -172,6 +219,7 @@ public class TestClient
 //	client.constructorTestConn();
 //	client.itrTest();
 //	client.queryTest();
-	client.queryTestColumnIdx();
+//	client.queryTestColumnIdx();
+	client.testPreparedQuery();
     }
 }

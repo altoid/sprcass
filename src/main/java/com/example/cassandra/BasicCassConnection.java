@@ -246,7 +246,8 @@ public class BasicCassConnection
 	PreparedStatement prepareStatement(String sql) 
 	throws SQLException
     {		      
-	return null;
+	PreparedStatement ps = new BasicCassPreparedStatement(this, sql);
+	return ps;
     }		      
 		      
     public

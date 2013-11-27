@@ -21,10 +21,6 @@ public class BasicCassStatement
     private boolean m_isClosed;
     private BasicCassConnection m_conn;
 
-    public BasicCassStatement()
-    {
-    }
-
     public BasicCassStatement(BasicCassConnection conn)
     {
 	m_conn = conn;

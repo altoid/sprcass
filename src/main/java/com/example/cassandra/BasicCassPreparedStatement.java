@@ -35,8 +35,16 @@ public class BasicCassPreparedStatement
     extends BasicCassStatement
     implements PreparedStatement
 {
-    public BasicCassPreparedStatement()
+    private com.datastax.driver.core.BoundStatement m_bs;
+    private com.datastax.driver.core.Session m_session;
+
+    public BasicCassPreparedStatement(BasicCassConnection conn,
+				      String sql)
     {
+	super(conn);
+	m_session = conn.getCassSession();
+	com.datastax.driver.core.PreparedStatement ps = m_session.prepare(sql);
+	m_bs = new com.datastax.driver.core.BoundStatement(ps);
     }
 
     /////////////////////////////////////////////////// PreparedStatement implementation
@@ -66,8 +74,11 @@ public class BasicCassPreparedStatement
 	ResultSet executeQuery() 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	return null;
+	com.datastax.driver.core.ResultSet cass_rs = 
+	    m_session.execute(m_bs);
+
+	ResultSet rs = new BasicCassResultSet(cass_rs);
+	return rs;
     }
 
     public
@@ -385,7 +396,15 @@ public class BasicCassPreparedStatement
 	void setString(int parameterIndex, String x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
+	// beware:  java.sql preparedstatement indexes count from 1,
+	// and datastax driver counts from 0
+
+	try {
+	    m_bs.setString(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
