@@ -37,13 +37,32 @@ public class BasicCassResultSet
 {
     com.datastax.driver.core.ResultSet m_cass_rs;
     Iterator<com.datastax.driver.core.Row> m_itr;
+    com.datastax.driver.core.Row m_currentRow;
     boolean m_isClosed;
+    boolean m_beforeFirst;
+    boolean m_afterLast;
+    boolean m_rsIsEmpty;
 
     public BasicCassResultSet(com.datastax.driver.core.ResultSet cass_rs)
     {
 	m_isClosed = false;
 	m_cass_rs = cass_rs;
 	m_itr = m_cass_rs.iterator();
+	m_currentRow = null;
+
+	// if the RS has no results,
+	// beforeFirst and afterLast are always false
+
+	m_rsIsEmpty = !m_itr.hasNext();
+
+	if (m_rsIsEmpty) {
+	    m_beforeFirst = false;
+	    m_afterLast = false;
+	}
+	else {
+	    m_beforeFirst = true;
+	    m_afterLast = false;
+	}
     }
 
     /////////////////////////////////////////////////// ResultSet implementation
@@ -59,14 +78,14 @@ public class BasicCassResultSet
 	void afterLast() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
+	// ===================== UNIMPLEMENTED
     }
 
     public
 	void beforeFirst() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
+	// ===================== UNIMPLEMENTED
     }
 
     public
@@ -598,8 +617,19 @@ public class BasicCassResultSet
 	String getString(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	return null;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	// beware:  java.sql ResultSets count columns from 1,
+	// the datastax RS counts from 0.
+
+	try {
+	    return m_currentRow.getString(columnIndex - 1);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -610,7 +640,7 @@ public class BasicCassResultSet
 	    throw new SQLException("ResultSet is closed");
 	}
 
-	return null;
+	return m_currentRow.getString(columnLabel);
     }
 
     public
@@ -737,7 +767,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	return m_afterLast;
     }
 
     public
@@ -745,7 +775,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	return m_beforeFirst;
     }
 
     public
@@ -799,6 +829,24 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	if (m_isClosed) {
+	    throw new SQLException("result set is closed");
+	}
+
+	if (m_rsIsEmpty) {
+	    return false;
+	}
+
+	if (m_itr.hasNext()) {
+	    m_currentRow = m_itr.next();
+	    m_beforeFirst = false;
+	    return true;
+	}
+	else {
+	    m_currentRow = null;
+	    m_afterLast = true;
+	}
+
 	return false;
     }
 

@@ -66,18 +66,101 @@ public class TestClient
 	    }
 	}
 	catch (SQLException e) {
+	    m_log.fatal("got sqlexception", e);
 	}
 	finally {
 	    try {
 		stmt.close();
 	    }
 	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
 	    }
 
 	    try {
 		conn.close();
 	    }
 	    catch (Exception e) {
+		m_log.fatal("got exception when closing conn", e);
+	    }
+	}
+    }
+
+    // test getting columns by number instead of by name
+    public void queryTestColumnIdx()
+    {
+	Statement stmt = null;
+	Connection conn = null;
+	try {
+	    DataSource ds = new BasicCassDataSource("10.100.182.166");
+
+	    conn = ds.getConnection();
+	    stmt = conn.createStatement();
+
+	    java.sql.ResultSet rs = stmt.executeQuery("select * from testks.testcf;"); // need to append ";"
+
+	    while (rs.next()) {
+		System.out.println(String.format("%-20s\t%-20s\t%-30s",
+						 rs.getString(1),
+						 rs.getString(2),
+						 rs.getString(3)));
+	    }
+	}
+	catch (SQLException e) {
+	    m_log.fatal("got sqlexception", e);
+	}
+	finally {
+	    try {
+		stmt.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		conn.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing conn", e);
+	    }
+	}
+    }
+
+    public void itrTest()
+    {
+	Statement stmt = null;
+	Connection conn = null;
+	try {
+	    DataSource ds = new BasicCassDataSource("10.100.182.166");
+
+	    conn = ds.getConnection();
+	    stmt = conn.createStatement();
+
+	    java.sql.ResultSet rs = stmt.executeQuery("select * from testks.testcf;"); // need to append ";"
+
+	    int counter = 0;
+	    m_log.debug("before loop:  isBeforeFirst = " + rs.isBeforeFirst() + ", isAfterLast = " + rs.isAfterLast() + ", counter = " +  counter);
+	    while (rs.next()) {
+		counter ++;
+		m_log.debug("in loop:  isBeforeFirst = " + rs.isBeforeFirst() + ", isAfterLast = " + rs.isAfterLast() + ", counter = " +  counter);
+	    }
+	    m_log.debug("after loop:  isBeforeFirst = " + rs.isBeforeFirst() + ", isAfterLast = " + rs.isAfterLast() + ", counter = " +  counter);
+	}
+	catch (SQLException e) {
+	    m_log.fatal("got sqlexception", e);
+	}
+	finally {
+	    try {
+		stmt.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		conn.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing conn", e);
 	    }
 	}
     }
@@ -85,8 +168,10 @@ public class TestClient
     public static void main(String[] args) 
     {
 	TestClient client = new TestClient();
-	client.constructorTestDS();
-	client.constructorTestConn();
-	//	client.queryTest();
+//	client.constructorTestDS();
+//	client.constructorTestConn();
+//	client.itrTest();
+//	client.queryTest();
+	client.queryTestColumnIdx();
     }
 }
