@@ -3,20 +3,12 @@ package com.example.cassandra;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-//import com.datastax.driver.core.Cluster;
-//import com.datastax.driver.core.Host;
-//import com.datastax.driver.core.Metadata;
-//import com.datastax.driver.core.Session;
-//import com.datastax.driver.core.ResultSet;
-//import com.datastax.driver.core.Row;
-//import com.datastax.driver.core.PreparedStatement;
-//import com.datastax.driver.core.BoundStatement;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 
 import javax.sql.DataSource;
 
@@ -71,14 +63,18 @@ public class TestClient
 	}
 	finally {
 	    try {
-		stmt.close();
+		if (stmt != null) {
+		    stmt.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing stmt", e);
 	    }
 
 	    try {
-		conn.close();
+		if (conn != null) {
+		    conn.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing conn", e);
@@ -111,14 +107,18 @@ public class TestClient
 	}
 	finally {
 	    try {
-		stmt.close();
+		if (stmt != null) {
+		    stmt.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing stmt", e);
 	    }
 
 	    try {
-		conn.close();
+		if (conn != null) {
+		    conn.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing conn", e);
@@ -151,14 +151,18 @@ public class TestClient
 	}
 	finally {
 	    try {
-		stmt.close();
+		if (stmt != null) {
+		    stmt.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing stmt", e);
 	    }
 
 	    try {
-		conn.close();
+		if (conn != null) {
+		    conn.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing conn", e);
@@ -197,14 +201,18 @@ public class TestClient
 	}
 	finally {
 	    try {
-		stmt.close();
+		if (stmt != null) {
+		    stmt.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing stmt", e);
 	    }
 
 	    try {
-		conn.close();
+		if (conn != null) {
+		    conn.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing conn", e);
@@ -215,33 +223,53 @@ public class TestClient
     public void testCRUD()
     {
 	/*
-           cqlsh:testks> create table hodgepodge
-                     ... ( uuid uuid,
-                     ... boolean boolean,
-                     ... float float,
-                     ... int int,
-                     ... varchar varchar,
-                     ... timestamp timestamp ,
-                     ... primary key(uuid));
+CREATE TABLE hodgepodge (
+  "timestamp" timestamp,
+  boolean boolean,
+  float float,
+  int int,
+  varchar text,
+  PRIMARY KEY ("timestamp")
+) WITH
 	*/
 
 	Connection conn = null;
+	PreparedStatement insertStmt = null;
+	String insertSql = "insert into testks.hodgepodge (boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?);";
 
 	try {
 	    DataSource ds = new BasicCassDataSource("10.100.182.166");
 
 	    conn = ds.getConnection();
+	    Timestamp ts = new Timestamp(System.currentTimeMillis());
 
-	    /*
-	      insert into hodgepodge (uuid, boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?,?)
-	     */
+	    insertStmt = conn.prepareStatement(insertSql);
+	    insertStmt.setString   (4, "humphrey");
+	    insertStmt.setFloat    (2, (float)3.1416);
+	    insertStmt.setBoolean  (1, true);
+	    insertStmt.setInt      (3, 48);
+	    insertStmt.setTimestamp(5, ts);
+
+	    int status = insertStmt.executeUpdate();
+
 	}
 	catch (SQLException e) {
 	    m_log.fatal("got sqlexception", e);
 	}
 	finally {
 	    try {
-		conn.close();
+		if (insertStmt != null) {
+		    insertStmt.close();
+		}
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		if (conn != null) {
+		    conn.close();
+		}
 	    }
 	    catch (Exception e) {
 		m_log.fatal("got exception when closing conn", e);
@@ -258,5 +286,6 @@ public class TestClient
 //	client.queryTest();
 //	client.queryTestColumnIdx();
 //	client.testPreparedQuery();
+	client.testCRUD();
     }
 }

@@ -78,20 +78,42 @@ public class BasicCassPreparedStatement
 	ResultSet executeQuery() 
 	throws SQLException
     {
-	com.datastax.driver.core.ResultSet cass_rs = 
-	    m_session.execute(m_bs);
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
 
-	ResultSet rs = new BasicCassResultSet(cass_rs);
-	return rs;
+	try {
+	    com.datastax.driver.core.ResultSet cass_rs = 
+		m_session.execute(m_bs);
+
+	    ResultSet rs = new BasicCassResultSet(cass_rs);
+	    return rs;
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	int executeUpdate() 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    // result set will be empty
+	    com.datastax.driver.core.ResultSet cass_rs = 
+		m_session.execute(m_bs);
+
+	    // we'll return 0 - for DML statements there's no way to
+	    // get the row count from the datastax driver.
+	    return 0;
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -204,8 +226,16 @@ public class BasicCassPreparedStatement
 	void setBoolean(int parameterIndex, boolean x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    m_bs.setBool(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -300,16 +330,32 @@ public class BasicCassPreparedStatement
 	void setFloat(int parameterIndex, float x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    m_bs.setFloat(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	void setInt(int parameterIndex, int x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    m_bs.setInt(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -447,6 +493,10 @@ public class BasicCassPreparedStatement
 	// beware:  java.sql preparedstatement indexes count from 1,
 	// and datastax driver counts from 0
 
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
 	try {
 	    m_bs.setString(parameterIndex - 1, x);
 	}
@@ -475,8 +525,18 @@ public class BasicCassPreparedStatement
 	void setTimestamp(int parameterIndex, Timestamp x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	java.util.Date d = new java.util.Date(x.getTime());
+
+	try {
+	    m_bs.setDate(parameterIndex - 1, d);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
