@@ -253,18 +253,32 @@ public class BasicCassResultSet
 	boolean getBoolean (int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return false;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getBool(columnIndex - 1);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	boolean getBoolean (String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return false;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getBool(columnLabel);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -361,6 +375,10 @@ public class BasicCassResultSet
 	Date getDate(int columnIndex) 
 	throws SQLException
     {
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
 	// ================================= UNIMPLEMENTED
 	throw new SQLFeatureNotSupportedException();
 	// return null;
@@ -379,6 +397,10 @@ public class BasicCassResultSet
 	Date getDate(String columnLabel) 
 	throws SQLException
     {
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
 	// ================================= UNIMPLEMENTED
 	throw new SQLFeatureNotSupportedException();	     
 	// return null;
@@ -433,18 +455,32 @@ public class BasicCassResultSet
 	float getFloat(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getFloat(columnIndex - 1);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	float getFloat(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getFloat(columnLabel);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -460,18 +496,32 @@ public class BasicCassResultSet
 	int getInt (int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getInt(columnIndex - 1);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	int getInt (String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getInt(columnLabel);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -708,7 +758,12 @@ public class BasicCassResultSet
 	    throw new SQLException("ResultSet is closed");
 	}
 
-	return m_currentRow.getString(columnLabel);
+	try {
+	    return m_currentRow.getString(columnLabel);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -751,9 +806,17 @@ public class BasicCassResultSet
 	Timestamp getTimestamp(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();		  
-	// return null;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    java.util.Date d = m_currentRow.getDate(columnIndex - 1);
+	    return new Timestamp(d.getTime());
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }		  
 		  
     public	  
@@ -769,9 +832,17 @@ public class BasicCassResultSet
 	Timestamp getTimestamp(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();		  
-	// return null;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    java.util.Date d = m_currentRow.getDate(columnLabel);
+	    return new Timestamp(d.getTime());
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }		  
 		  
     public	  
@@ -867,9 +938,7 @@ public class BasicCassResultSet
 	boolean isClosed() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return m_isClosed;
+	return m_isClosed;
     }
 
     public

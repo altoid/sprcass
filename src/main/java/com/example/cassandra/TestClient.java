@@ -49,7 +49,7 @@ public class TestClient
 	    conn = ds.getConnection();
 	    stmt = conn.createStatement();
 
-	    java.sql.ResultSet rs = stmt.executeQuery("select * from testks.testcf;"); // need to append ";"
+	    ResultSet rs = stmt.executeQuery("select * from testks.testcf;"); // need to append ";"
 
 	    while (rs.next()) {
 		System.out.println(String.format("%-20s\t%-20s\t%-30s",
@@ -235,7 +235,13 @@ CREATE TABLE hodgepodge (
 
 	Connection conn = null;
 	PreparedStatement insertStmt = null;
+	PreparedStatement updateStmt = null;
+	PreparedStatement queryStmt = null;
+	ResultSet rs = null;
+
 	String insertSql = "insert into testks.hodgepodge (boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?);";
+	String updateSql = "update testks.hodgepodge set varchar = ? where timestamp = ?;";
+	String querySql = "select * from testks.hodgepodge where timestamp = ?;";
 
 	try {
 	    DataSource ds = new BasicCassDataSource("10.100.182.166");
@@ -252,14 +258,67 @@ CREATE TABLE hodgepodge (
 
 	    int status = insertStmt.executeUpdate();
 
+	    updateStmt = conn.prepareStatement(updateSql);
+	    updateStmt.setTimestamp(2, ts);
+	    updateStmt.setString(1, "homer");
+
+	    status = updateStmt.executeUpdate();
+
+	    queryStmt = conn.prepareStatement(querySql);
+	    queryStmt.setTimestamp(1, ts);
+	    rs = queryStmt.executeQuery();
+
+	    while (rs.next()) {
+		String formatString = "%-20s\t%-20s\t%-20s\t%-20f\t%-20d";
+		System.out.println(String.format(formatString,
+						 rs.getTimestamp("timestamp"),
+						 rs.getString("varchar"),
+						 rs.getBoolean("boolean") ? "True" : "False",
+						 rs.getFloat("float"),
+						 rs.getInt("int")));
+		System.out.println(String.format(formatString,
+						 rs.getTimestamp(1),
+						 rs.getString(5),
+						 rs.getBoolean(2) ? "True" : "False",
+						 rs.getFloat(3),
+						 rs.getInt(4)));
+	    }
+
 	}
 	catch (SQLException e) {
 	    m_log.fatal("got sqlexception", e);
 	}
 	finally {
 	    try {
+		if (rs != null) {
+		    rs.close();
+		}
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing result set", e);
+	    }
+
+	    try {
+		if (queryStmt != null) {
+		    queryStmt.close();
+		}
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
 		if (insertStmt != null) {
 		    insertStmt.close();
+		}
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		if (updateStmt != null) {
+		    updateStmt.close();
 		}
 	    }
 	    catch (Exception e) {
