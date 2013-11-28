@@ -20,6 +20,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.RowId;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.SQLXML;
 import java.sql.Statement;
@@ -71,7 +72,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ===================== UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -79,6 +81,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ===================== UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -86,6 +89,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ===================== UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -93,6 +97,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -100,13 +105,13 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
 	void close() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
 	m_isClosed = true;
     }
 
@@ -115,6 +120,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -122,7 +128,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -130,7 +137,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -138,7 +146,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -146,7 +155,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -154,7 +164,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -162,31 +173,35 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	BigDecimal getBigDecimal(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		   
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		   
+	// return null;
     }		   
 		   
     public	   
 	BigDecimal getBigDecimal(int columnIndex, int scale) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		   
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		   
+	// return null;
     }		   
 		   
     public	   
 	BigDecimal getBigDecimal(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		   
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		   
+	// return null;
     }		   
 		   
     public	   
@@ -194,7 +209,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -202,7 +218,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -210,15 +227,17 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	Blob getBlob(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	     
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	     
+	// return null;
     }	     
 	     
     public   
@@ -226,7 +245,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -234,7 +254,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -242,7 +263,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -250,7 +272,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -258,7 +281,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -266,7 +290,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -274,7 +299,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -282,7 +308,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -290,7 +317,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -298,7 +326,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -306,7 +335,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -314,7 +344,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -322,7 +353,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -330,23 +362,26 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	Date getDate(int columnIndex, Calendar cal) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	     
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	     
+	// return null;
     }	     
 	     
     public   
 	Date getDate(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	     
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	     
+	// return null;
     }	     
 	     
     public   
@@ -354,7 +389,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -362,7 +398,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -370,7 +407,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -378,7 +416,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -386,7 +425,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -394,7 +434,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -402,7 +443,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -410,7 +452,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -418,7 +461,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -426,7 +470,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -434,7 +479,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -442,7 +488,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -450,7 +497,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -458,7 +506,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -466,7 +515,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -474,7 +524,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -482,7 +533,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -490,7 +542,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -498,7 +551,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -506,23 +560,26 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	Object getObject(int columnIndex, Map<String,Class<?>> map) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	       
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	       
+	// return null;
     }	       
 	       
     public     
 	Object getObject(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	       
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	       
+	// return null;
     }	       
 	       
     public     
@@ -530,7 +587,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -538,7 +596,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -546,7 +605,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -554,7 +614,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -562,23 +623,26 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	RowId getRowId(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	      
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	      
+	// return null;
     }	      
 	      
     public    
 	short getShort(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	      
-	return 0;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	      
+	// return 0;
     }	      
 	      
     public    
@@ -586,7 +650,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -594,7 +659,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -602,7 +668,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -610,7 +677,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -648,7 +716,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -656,15 +725,17 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	Time getTime(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED	     
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();	     
+	// return null;
     }	     
 	     
     public   
@@ -672,31 +743,35 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
 	Timestamp getTimestamp(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		  
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		  
+	// return null;
     }		  
 		  
     public	  
 	Timestamp getTimestamp(int columnIndex, Calendar cal) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		  
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		  
+	// return null;
     }		  
 		  
     public	  
 	Timestamp getTimestamp(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED		  
-	return null;
+	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();		  
+	// return null;
     }		  
 		  
     public	  
@@ -704,7 +779,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -712,7 +788,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -720,7 +797,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -728,7 +806,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -736,7 +815,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -744,7 +824,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -752,7 +833,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -760,6 +842,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -767,7 +850,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return m_afterLast;
+	throw new SQLFeatureNotSupportedException();
+	// return m_afterLast;
     }
 
     public
@@ -775,7 +859,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return m_beforeFirst;
+	throw new SQLFeatureNotSupportedException();
+	// return m_beforeFirst;
     }
 
     public
@@ -783,7 +868,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return m_isClosed;
+	throw new SQLFeatureNotSupportedException();
+	// return m_isClosed;
     }
 
     public
@@ -791,7 +877,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -799,7 +886,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -807,7 +895,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -815,6 +904,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -822,13 +912,13 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
 	boolean next() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
 	if (m_isClosed) {
 	    throw new SQLException("result set is closed");
 	}
@@ -855,7 +945,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -863,6 +954,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -870,7 +962,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -878,7 +971,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -886,7 +980,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -894,7 +989,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -902,6 +998,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -909,6 +1006,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -916,6 +1014,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -923,6 +1022,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -930,6 +1030,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -937,6 +1038,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -944,6 +1046,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -951,6 +1054,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -958,6 +1062,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -965,6 +1070,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -972,6 +1078,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -979,6 +1086,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -986,6 +1094,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -993,6 +1102,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1000,6 +1110,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1007,6 +1118,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1014,6 +1126,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1021,6 +1134,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1028,6 +1142,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1035,6 +1150,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1042,6 +1158,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1049,6 +1166,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1056,6 +1174,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1063,6 +1182,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1070,6 +1190,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1077,6 +1198,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1084,6 +1206,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1091,6 +1214,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1098,6 +1222,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1105,6 +1230,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1112,6 +1238,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1119,6 +1246,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1126,6 +1254,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1133,6 +1262,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1140,6 +1270,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1147,6 +1278,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1154,6 +1286,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1161,6 +1294,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1168,6 +1302,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1175,6 +1310,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1182,6 +1318,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1189,6 +1326,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1196,6 +1334,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1203,6 +1342,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1210,6 +1350,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1217,6 +1358,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1224,6 +1366,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1231,6 +1374,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1238,6 +1382,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1245,6 +1390,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1252,6 +1398,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1259,6 +1406,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1266,6 +1414,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1273,6 +1422,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1280,6 +1430,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1287,6 +1438,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1294,6 +1446,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1301,6 +1454,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1308,6 +1462,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1315,6 +1470,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1322,6 +1478,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1329,6 +1486,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1336,6 +1494,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1343,6 +1502,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1350,6 +1510,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1357,6 +1518,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1364,6 +1526,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1371,6 +1534,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1378,6 +1542,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1385,6 +1550,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1392,6 +1558,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1399,6 +1566,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1406,6 +1574,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1413,6 +1582,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1420,6 +1590,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1427,6 +1598,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1434,6 +1606,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1441,6 +1614,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1448,6 +1622,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1455,6 +1630,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1462,6 +1638,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1469,6 +1646,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1476,6 +1654,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1483,6 +1662,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1490,6 +1670,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -1497,7 +1678,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     /////////////////////////////////////////////////// Wrapper implementation
@@ -1506,7 +1688,8 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -1514,6 +1697,7 @@ public class BasicCassResultSet
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 }

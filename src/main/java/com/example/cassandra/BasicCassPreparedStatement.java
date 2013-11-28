@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.RowId;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.SQLXML;
 import java.sql.Statement;
@@ -53,6 +54,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -60,6 +62,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -67,7 +70,8 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
-	return false;
+	throw new SQLFeatureNotSupportedException();
+	// return false;
     }
 
     public
@@ -86,7 +90,8 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
-	return 0;
+	throw new SQLFeatureNotSupportedException();
+	// return 0;
     }
 
     public
@@ -94,7 +99,8 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -102,7 +108,8 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
-	return null;
+	throw new SQLFeatureNotSupportedException();
+	// return null;
     }
 
     public
@@ -110,6 +117,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -117,6 +125,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -124,6 +133,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -131,6 +141,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -138,6 +149,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -145,6 +157,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -152,6 +165,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -159,6 +173,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -166,6 +181,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -173,6 +189,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -180,6 +197,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -187,6 +205,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -194,6 +213,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -201,6 +221,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -208,6 +229,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -215,6 +237,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -222,6 +245,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -229,6 +253,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -236,6 +261,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -243,6 +269,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -250,6 +277,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -257,6 +285,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -264,6 +293,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -271,6 +301,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -278,6 +309,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -285,6 +317,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -292,6 +325,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -299,6 +333,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -306,6 +341,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -313,6 +349,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -320,6 +357,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -327,6 +365,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -334,6 +373,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -341,6 +381,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -348,6 +389,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -355,6 +397,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -362,6 +405,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -369,6 +413,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -376,6 +421,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -383,6 +429,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -390,6 +437,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -412,6 +460,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -419,6 +468,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -426,6 +476,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -433,6 +484,7 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -441,6 +493,7 @@ public class BasicCassPreparedStatement
     {
 	// ============================= DEPRECATED
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 
     public
@@ -448,5 +501,6 @@ public class BasicCassPreparedStatement
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
+	throw new SQLFeatureNotSupportedException();
     }
 }

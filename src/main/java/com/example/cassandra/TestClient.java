@@ -212,6 +212,43 @@ public class TestClient
 	}
     }
 
+    public void testCRUD()
+    {
+	/*
+           cqlsh:testks> create table hodgepodge
+                     ... ( uuid uuid,
+                     ... boolean boolean,
+                     ... float float,
+                     ... int int,
+                     ... varchar varchar,
+                     ... timestamp timestamp ,
+                     ... primary key(uuid));
+	*/
+
+	Connection conn = null;
+
+	try {
+	    DataSource ds = new BasicCassDataSource("10.100.182.166");
+
+	    conn = ds.getConnection();
+
+	    /*
+	      insert into hodgepodge (uuid, boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?,?)
+	     */
+	}
+	catch (SQLException e) {
+	    m_log.fatal("got sqlexception", e);
+	}
+	finally {
+	    try {
+		conn.close();
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing conn", e);
+	    }
+	}
+    }
+
     public static void main(String[] args) 
     {
 	TestClient client = new TestClient();
@@ -220,6 +257,6 @@ public class TestClient
 //	client.itrTest();
 //	client.queryTest();
 //	client.queryTestColumnIdx();
-	client.testPreparedQuery();
+//	client.testPreparedQuery();
     }
 }
