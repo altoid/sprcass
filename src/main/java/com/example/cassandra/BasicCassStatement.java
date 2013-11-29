@@ -118,6 +118,10 @@ public class BasicCassStatement
 	ResultSet executeQuery(String sql) 
 	throws SQLException
     {
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
 	com.datastax.driver.core.Session cassSession = m_conn.getCassSession();
 	com.datastax.driver.core.ResultSet rs = 
 	    cassSession.execute(sql);
@@ -167,6 +171,10 @@ public class BasicCassStatement
 	Connection getConnection() 
 	throws SQLException
     {
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
 	return m_conn;
     }
 
