@@ -223,7 +223,7 @@ public class TestClient
     public void testCRUD()
     {
 	/*
-CREATE TABLE hodgepodge (
+CREATE TABLE crud (
   "timestamp" timestamp,
   boolean boolean,
   float float,
@@ -237,11 +237,13 @@ CREATE TABLE hodgepodge (
 	PreparedStatement insertStmt = null;
 	PreparedStatement updateStmt = null;
 	PreparedStatement queryStmt = null;
+	PreparedStatement deleteStmt = null;
 	ResultSet rs = null;
 
-	String insertSql = "insert into testks.hodgepodge (boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?);";
-	String updateSql = "update testks.hodgepodge set varchar = ? where timestamp = ?;";
-	String querySql = "select * from testks.hodgepodge where timestamp = ?;";
+	String insertSql = "insert into testks.crud (boolean, float, int, varchar, timestamp) VALUES (?,?,?,?,?);";
+	String updateSql = "update testks.crud set varchar = ? where timestamp = ?;";
+	String querySql = "select * from testks.crud where timestamp = ?;";
+	String deleteSql = "delete from testks.crud where timestamp = ?;";
 
 	try {
 	    DataSource ds = new BasicCassDataSource("10.100.182.166");
@@ -284,6 +286,18 @@ CREATE TABLE hodgepodge (
 						 rs.getInt(4)));
 	    }
 
+	    deleteStmt = conn.prepareStatement(deleteSql);
+	    deleteStmt.setTimestamp(1, ts);
+	    status = deleteStmt.executeUpdate();
+
+	    m_log.debug("finished delete, looking for the row");
+	    rs = queryStmt.executeQuery();
+
+	    while (rs.next()) {
+		m_log.debug("ACK!  shouldn't see this");
+	    }
+	    m_log.debug("done with second query");
+
 	}
 	catch (SQLException e) {
 	    m_log.fatal("got sqlexception", e);
@@ -301,6 +315,15 @@ CREATE TABLE hodgepodge (
 	    try {
 		if (queryStmt != null) {
 		    queryStmt.close();
+		}
+	    }
+	    catch (Exception e) {
+		m_log.fatal("got exception when closing stmt", e);
+	    }
+
+	    try {
+		if (deleteStmt != null) {
+		    deleteStmt.close();
 		}
 	    }
 	    catch (Exception e) {
