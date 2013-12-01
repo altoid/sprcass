@@ -532,8 +532,6 @@ public class BasicCassPreparedStatement
 	}
 
 	try {
-	    m_log.debug("setString:  " + x);
-	    m_log.debug("m_bs:  " + m_bs);
 	    m_bs.setString(parameterIndex - 1, x);
 	}
 	catch (Exception e) {
