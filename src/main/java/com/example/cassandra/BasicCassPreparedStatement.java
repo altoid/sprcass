@@ -5,6 +5,9 @@ import java.io.Reader;
 
 import java.math.BigDecimal;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.net.URL;
 
 import java.util.Calendar;
@@ -15,7 +18,6 @@ import java.sql.CallableStatement;
 import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.Date;
 import java.sql.NClob;
 import java.sql.ParameterMetaData;
 import java.sql.PreparedStatement;
@@ -36,6 +38,8 @@ public class BasicCassPreparedStatement
     extends BasicCassStatement
     implements PreparedStatement
 {
+    private Log m_log = LogFactory.getLog(BasicCassPreparedStatement.class);
+
     private com.datastax.driver.core.BoundStatement m_bs;
     private com.datastax.driver.core.Session m_session;
 
@@ -69,9 +73,23 @@ public class BasicCassPreparedStatement
 	boolean execute() 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return false;
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    // for non-select queries, the result set will be empty,
+	    // but never null.
+	    com.datastax.driver.core.ResultSet cass_rs = 
+		m_session.execute(m_bs);
+
+	    // TODO: save the result set into the state of the
+	    // statement object, so that getResultSet may return it.
+	    return true;
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -303,15 +321,23 @@ public class BasicCassPreparedStatement
     }
 
     public
-	void setDate(int parameterIndex, Date x) 
+	void setDate(int parameterIndex, java.sql.Date x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    m_bs.setDate(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
-	void setDate(int parameterIndex, Date x, Calendar cal) 
+	void setDate(int parameterIndex, java.sql.Date x, Calendar cal) 
 	throws SQLException
     {
 	// ============================= UNIMPLEMENTED
@@ -362,8 +388,16 @@ public class BasicCassPreparedStatement
 	void setLong(int parameterIndex, long x) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
+	try {
+	    m_bs.setLong(parameterIndex - 1, x);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -498,6 +532,8 @@ public class BasicCassPreparedStatement
 	}
 
 	try {
+	    m_log.debug("setString:  " + x);
+	    m_log.debug("m_bs:  " + m_bs);
 	    m_bs.setString(parameterIndex - 1, x);
 	}
 	catch (Exception e) {

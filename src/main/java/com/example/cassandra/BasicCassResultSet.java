@@ -12,7 +12,6 @@ import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Clob;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.NClob;
 import java.sql.PreparedStatement;
 import java.sql.Ref;
@@ -372,20 +371,24 @@ public class BasicCassResultSet
     }
 
     public
-	Date getDate(int columnIndex) 
+	java.sql.Date getDate(int columnIndex) 
 	throws SQLException
     {
 	if (isClosed()) {
 	    throw new SQLException("ResultSet is closed");
 	}
 
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return null;
+	try {
+	    java.util.Date d = m_currentRow.getDate(columnIndex - 1);
+	    return new java.sql.Date(d.getTime());
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
-	Date getDate(int columnIndex, Calendar cal) 
+	java.sql.Date getDate(int columnIndex, Calendar cal) 
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
@@ -394,20 +397,24 @@ public class BasicCassResultSet
     }	     
 	     
     public   
-	Date getDate(String columnLabel) 
+	java.sql.Date getDate(String columnLabel) 
 	throws SQLException
     {
 	if (isClosed()) {
 	    throw new SQLException("ResultSet is closed");
 	}
 
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();	     
-	// return null;
+	try {
+	    java.util.Date d = m_currentRow.getDate(columnLabel);
+	    return new java.sql.Date(d.getTime());
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }	     
 	     
     public   
-	Date getDate(String columnLabel, Calendar cal) 
+	java.sql.Date getDate(String columnLabel, Calendar cal) 
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
@@ -528,18 +535,32 @@ public class BasicCassResultSet
 	long getLong(int columnIndex) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getLong(columnIndex - 1);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
 	long getLong(String columnLabel) 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return 0;
+	if (isClosed()) {
+	    throw new SQLException("ResultSet is closed");
+	}
+
+	try {
+	    return m_currentRow.getLong(columnLabel);
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
     }
 
     public
@@ -1399,7 +1420,7 @@ public class BasicCassResultSet
     }
 
     public
-	void updateDate(int columnIndex, Date x) 
+	void updateDate(int columnIndex, java.sql.Date x) 
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
@@ -1407,7 +1428,7 @@ public class BasicCassResultSet
     }
 
     public
-	void updateDate(String columnLabel, Date x) 
+	void updateDate(String columnLabel, java.sql.Date x) 
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
