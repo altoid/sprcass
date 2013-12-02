@@ -1,5 +1,6 @@
 package com.example.cassandra;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -29,6 +30,7 @@ public class BasicCassConnection
     private Cluster m_cluster;
     private Session m_session;
     private boolean m_isClosed;
+    private Map<String, Class<?>> m_typeMap;
 
     BasicCassConnection(String node)
     {
@@ -39,6 +41,7 @@ public class BasicCassConnection
 
 	m_session = m_cluster.connect();
 	m_isClosed = false;
+	m_typeMap = new HashMap<String, Class<?>>();
     }
 
     Session getCassSession()
@@ -181,6 +184,10 @@ public class BasicCassConnection
 	DatabaseMetaData getMetaData() 
 	throws SQLException
     {
+	if (m_isClosed) {
+	    throw new SQLException("connection is closed");
+	}
+
 	return new CassMetaData();
     }
 
@@ -192,11 +199,14 @@ public class BasicCassConnection
     }
 
     public
-	Map getTypeMap() 
+	Map<String, Class<?>> getTypeMap() 
 	throws SQLException
     {
-	// =================================== UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (m_isClosed) {
+	    throw new SQLException("connection is closed");
+	}
+
+	return m_typeMap;
     }
 
     public
@@ -389,6 +399,11 @@ public class BasicCassConnection
 	void setTypeMap(Map<String,Class<?>> map) 
 	throws SQLException
     {
+	if (m_isClosed) {
+	    throw new SQLException("connection is closed");
+	}
+
+	m_typeMap = map;
     }
 
     /////////////////////////////////////////////////// Wrapper implementation
