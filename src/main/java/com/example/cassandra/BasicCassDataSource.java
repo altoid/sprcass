@@ -78,7 +78,7 @@ public class BasicCassDataSource
 
     /////////////////////////////////////////////////// Wrapper implementation
     public
-	boolean isWrapperFor(Class iface)
+	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
 	return false;

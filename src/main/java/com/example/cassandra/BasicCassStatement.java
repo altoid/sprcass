@@ -57,6 +57,10 @@ public class BasicCassStatement
 	void clearWarnings() 
 	throws SQLException
     {
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
+
 	// ================================= UNIMPLEMENTED
 	throw new SQLFeatureNotSupportedException();
     }
@@ -299,10 +303,12 @@ public class BasicCassStatement
 	SQLWarning getWarnings() 
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isClosed()) {
+	    throw new SQLException("statement is closed");
+	}
 
-	// return null;
+	// ================================= UNIMPLEMENTED
+	return null;
     }
 
     public
@@ -396,7 +402,7 @@ public class BasicCassStatement
 
     /////////////////////////////////////////////////// Wrapper implementation
     public
-	boolean isWrapperFor(Class iface)
+	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
 	// ================================= UNIMPLEMENTED
