@@ -52,12 +52,11 @@ public class Driver
 
 	parts = url.split("/");
 
-	if (parts.length < 2) {
+	if (parts.length < 1) {
 	    return null;
 	}
 
 	returnMe.setProperty("node", parts[0]);
-	returnMe.setProperty("keyspace", parts[1]);
 
 	return returnMe;
     }
