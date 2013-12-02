@@ -33,15 +33,16 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 
 public class BasicCassResultSet
-    implements ResultSet
+    implements ResultSet, ICassMapReader
+
 {
-    com.datastax.driver.core.ResultSet m_cass_rs;
-    Iterator<com.datastax.driver.core.Row> m_itr;
-    com.datastax.driver.core.Row m_currentRow;
-    boolean m_isClosed;
-    boolean m_beforeFirst;
-    boolean m_afterLast;
-    boolean m_rsIsEmpty;
+    private com.datastax.driver.core.ResultSet m_cass_rs;
+    private Iterator<com.datastax.driver.core.Row> m_itr;
+    private com.datastax.driver.core.Row m_currentRow;
+    private boolean m_isClosed;
+    private boolean m_beforeFirst;
+    private boolean m_afterLast;
+    private boolean m_rsIsEmpty;
 
     public BasicCassResultSet(com.datastax.driver.core.ResultSet cass_rs)
     {
@@ -62,6 +63,39 @@ public class BasicCassResultSet
 	else {
 	    m_beforeFirst = true;
 	    m_afterLast = false;
+	}
+    }
+
+    /////////////////////////////////////////////////// ICassMapReader implementation
+    /*
+      the value for columnIndex will follow the same convention as columnIndexes elsewhere
+      in JDBC - we number them starting from 1.
+     */
+    public
+	<K, V> Map<K, V> getMap(int columnIndex, Class<K> keyClass, Class<V> valueClass)
+	throws SQLException
+    {
+	try {
+	    Map<K, V> returnMe = m_currentRow.getMap(columnIndex - 1, keyClass, valueClass);
+
+	    return returnMe;
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
+	}
+    }
+
+    public
+	<K, V> Map<K, V> getMap(String columnLabel, Class<K> keyClass, Class<V> valueClass)
+	throws SQLException
+    {
+	try {
+	    Map<K, V> returnMe = m_currentRow.getMap(columnLabel, keyClass, valueClass);
+
+	    return returnMe;
+	}
+	catch (Exception e) {
+	    throw new SQLException(e);
 	}
     }
 
@@ -1777,17 +1811,18 @@ public class BasicCassResultSet
 	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return false;
+	return iface.isAssignableFrom(getClass());
     }
 
     public
 	<T> T unwrap(Class<T> iface)
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-	// return null;
+	if (isWrapperFor(iface)) {
+	    
+	    return (T) this;
+	}
+
+	throw new SQLFeatureNotSupportedException("not a wrapper for " + iface.getName());
     }
 }
