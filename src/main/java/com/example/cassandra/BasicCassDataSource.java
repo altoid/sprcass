@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -81,13 +82,18 @@ public class BasicCassDataSource
 	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
-	return false;
+	return iface.isAssignableFrom(getClass());
     }
 
     public
 	<T> T unwrap(Class<T> iface)
 	throws SQLException
     {
-	return null;
+	if (isWrapperFor(iface)) {
+	    
+	    return (T) this;
+	}
+
+	throw new SQLFeatureNotSupportedException("not a wrapper for " + iface.getName());
     }
 }

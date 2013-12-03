@@ -405,19 +405,18 @@ public class BasicCassStatement
 	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
-
-	// return false;
+	return iface.isAssignableFrom(getClass());
     }
 
     public
 	<T> T unwrap(Class<T> iface)
 	throws SQLException
     {
-	// ================================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (isWrapperFor(iface)) {
+	    
+	    return (T) this;
+	}
 
-	// return null;
+	throw new SQLFeatureNotSupportedException("not a wrapper for " + iface.getName());
     }
 }

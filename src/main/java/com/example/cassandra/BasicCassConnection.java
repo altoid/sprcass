@@ -411,13 +411,18 @@ public class BasicCassConnection
 	boolean isWrapperFor(Class<?> iface)
 	throws SQLException
     {
-	return false;
+	return iface.isAssignableFrom(getClass());
     }
 
     public
 	<T> T unwrap(Class<T> iface)
 	throws SQLException
     {
-	return null;
+	if (isWrapperFor(iface)) {
+	    
+	    return (T) this;
+	}
+
+	throw new SQLFeatureNotSupportedException("not a wrapper for " + iface.getName());
     }
 }
