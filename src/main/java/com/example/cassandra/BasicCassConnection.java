@@ -1,5 +1,8 @@
 package com.example.cassandra;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -27,6 +30,8 @@ import com.datastax.driver.core.Session;
 public class BasicCassConnection
     implements Connection
 {
+    private Log m_log = LogFactory.getLog(BasicCassConnection.class);
+
     private Cluster m_cluster;
     private Session m_session;
     private boolean m_isClosed;
@@ -314,8 +319,12 @@ public class BasicCassConnection
 	PreparedStatement prepareStatement(String sql, String[] columnNames) 
 	throws SQLException
     {
-	// =================================== UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	// for inserts, the column names are ignored.  we'll ignore them
+	// in all cases for now :-)
+
+	m_log.debug(">>>>>>>>>>>> prepareStatement(String sql, String[] columnNames) |" + sql + "|");
+	PreparedStatement ps = new BasicCassPreparedStatement(this, sql);
+	return ps;
     }
 
     public

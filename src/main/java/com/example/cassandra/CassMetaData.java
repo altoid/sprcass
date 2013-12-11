@@ -180,7 +180,7 @@ public class CassMetaData
     public
 	String getDriverName() 
     {
-	return "My Cass Driver";
+	return Driver.class.getName();
     }
 
     public

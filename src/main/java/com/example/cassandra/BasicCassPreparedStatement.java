@@ -33,6 +33,7 @@ import java.sql.Statement;
 import java.sql.Struct;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.sql.Types;
 
 public class BasicCassPreparedStatement
     extends BasicCassStatement
@@ -476,8 +477,25 @@ public class BasicCassPreparedStatement
 	void setObject(int parameterIndex, Object x, int targetSqlType) 
 	throws SQLException
     {
-	// ============================= UNIMPLEMENTED
-	throw new SQLFeatureNotSupportedException();
+	if (targetSqlType == Types.INTEGER) {
+	    if (x.getClass() == Long.class) {
+		Long n = (Long)x;
+		m_bs.setLong(parameterIndex - 1, n.intValue());
+		return;
+	    }
+
+	    if (x.getClass() == Integer.class) {
+		Integer n = (Integer)x;
+		m_bs.setInt(parameterIndex - 1, n.intValue());
+		return;
+	    }
+	}
+
+	String message = "pindex = " + parameterIndex + ", " +
+	    "obj = " + x.getClass().getName() + ", " +
+	    "sqltype = " + targetSqlType + " not supported";
+
+	throw new SQLFeatureNotSupportedException(message);
     }
 
     public
